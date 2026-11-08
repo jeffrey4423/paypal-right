@@ -40,12 +40,43 @@
 .activity-amount.positive{color:#27ae60}
 .activity-amount.negative{color:#e74c3c}
 
+/* ===== BALANCE NOTE (MATCHES ACTIVATION UI) ===== */
+.balance-note {
+    font-size: 13px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+.balance-note.note-success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border-color: #c3e6cb;
+    color: #155724;
+}
+.balance-note.note-success i { color: #28a745; margin-top: 2px; }
+.balance-note.note-warning {
+    background: #f1f3f6;
+    border-color: #e0e3e7;
+    color: #4a4f55;
+}
+.balance-note.note-warning i { color: #f5a623; margin-top: 2px; }
+.balance-note.note-neutral {
+    background: #f1f3f6;
+    border-color: #e0e3e7;
+    color: #4a4f55;
+}
+.balance-note.note-neutral i { color: #0070ba; margin-top: 2px; }
+
 /* ===== SIDEBAR TOGGLE - UPDATED FOR MOBILE ===== */
-/* Mobile first: Sidebar hidden by default */
 .sidebar {
     position: fixed;
     top: 0;
-    left: -280px; /* Hide off-screen */
+    left: -280px;
     width: 250px;
     height: 100vh;
     background: #fff;
@@ -55,33 +86,18 @@
     box-shadow: 2px 0 10px rgba(0,0,0,0.1);
     padding: 20px;
 }
-
-.sidebar.active {
-    left: 0; /* Slide in when active */
-}
-
-/* Overlay for mobile when sidebar is open */
+.sidebar.active { left: 0; }
 .sidebar-overlay {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0,0,0,0.5);
     z-index: 999;
 }
+.sidebar-overlay.active { display: block; }
 
-.sidebar-overlay.active {
-    display: block;
-}
-
-/* Desktop: Sidebar always visible */
 @media (min-width: 768px) {
-    .dashboard-container {
-        display: flex;
-    }
-    
+    .dashboard-container { display: flex; }
     .sidebar {
         position: static;
         left: 0;
@@ -93,29 +109,10 @@
         flex: 0 0 250px;
         background: transparent;
     }
-    
-    .sidebar-overlay {
-        display: none !important;
-    }
-    
-    .main-content {
-        flex: 1;
-        padding-left: 20px;
-    }
-    
-    #menuToggle {
-        display: none !important;
-    }
+    .sidebar-overlay { display: none !important; }
+    .main-content { flex: 1; padding-left: 20px; }
+    #menuToggle { display: none !important; }
 }
-
-/* Hide menu toggle on desktop */
-@media (min-width: 768px) {
-    #menuToggle {
-        display: none;
-    }
-}
-
-/* Show menu toggle on mobile */
 @media (max-width: 767px) {
     #menuToggle {
         display: flex;
@@ -130,13 +127,9 @@
         cursor: pointer;
         margin-right: 10px;
     }
-    
-    .nav-logo {
-        margin-left: 0;
-    }
+    .nav-logo { margin-left: 0; }
 }
 
-/* ===== CURRENCY SWITCH ===== */
 .balance-currency {
     font-size: 16px;
     color: #0070ba;
@@ -148,10 +141,7 @@
     gap: 4px;
     margin-top: 4px;
 }
-/* ===== ACTIVATION BUTTON ===== */
-.activation-section {
-    margin: 20px 0;
-}
+.activation-section { margin: 20px 0; }
 #activateAccount {
     padding: 12px 24px;
     font-size: 16px;
@@ -170,7 +160,6 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 112, 186, 0.3);
 }
-/* ===== ACTIVATION MESSAGE ===== */
 .activation-message {
     background: linear-gradient(135deg, #d4edda, #c3e6cb);
     border: 1px solid #c3e6cb;
@@ -179,15 +168,9 @@
     margin: 20px 0;
     color: #155724;
 }
-.activation-message i {
-    color: #28a745;
-    margin-right: 10px;
-}
-/* ===== LOADING STATES ===== */
-.loading {
-    opacity: 0.7;
-    pointer-events: none;
-}
+.activation-message i { color: #28a745; margin-right: 10px; }
+
+.loading { opacity: 0.7; pointer-events: none; }
 .loading-spinner {
     display: inline-block;
     width: 20px;
@@ -202,57 +185,47 @@
     100% { transform: rotate(360deg); }
 }
 
-
-/* ===========================
-   MOBILE OPTIMIZATION
-=========================== */
 @media (max-width:768px){
-
-.container{padding:8px;}
-.dashboard-container{display:block;}
-.nav-main{padding:8px 0;}
-.nav-container{flex-direction:column;gap:8px;}
-.nav-logo img{width:34px;}
-.nav-logo span{font-size:28px;font-weight:700;}
-.nav-menu{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;}
-.nav-button{font-size:13px;padding:8px 10px;}
-.balance-card{padding:18px;border-radius:18px;}
-.balance-label{font-size:16px;}
-.balance-amount{font-size:42px;margin:8px 0;}
-.balance-note{font-size:13px;}
-.balance-currency{font-size:14px;}
-.activation-section{margin:14px 0;}
-#activateAccount{width:100%;justify-content:center;font-size:15px;padding:14px;border-radius:12px;}
-.account-error{font-size:13px;padding:12px;border-radius:12px;}
-.account-error p{margin:8px 0;}
-.section-header h2{font-size:18px;}
-.activity-item{padding:12px;}
-.activity-title{font-size:14px;}
-.activity-meta{font-size:11px;}
-.activity-amount{font-size:14px;}
-.user-profile{padding:18px;}
-.avatar{width:60px;height:60px;font-size:24px;}
-.quick-actions h3{font-size:16px;}
-.action-btn{padding:12px;font-size:14px;border-radius:10px;}
-.main-content>*{margin-bottom:14px;}
+    .container{padding:8px;}
+    .dashboard-container{display:block;}
+    .nav-main{padding:8px 0;}
+    .nav-container{flex-direction:column;gap:8px;}
+    .nav-logo img{width:34px;}
+    .nav-logo span{font-size:28px;font-weight:700;}
+    .nav-menu{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;}
+    .nav-button{font-size:13px;padding:8px 10px;}
+    .balance-card{padding:18px;border-radius:18px;}
+    .balance-label{font-size:16px;}
+    .balance-amount{font-size:42px;margin:8px 0;}
+    .balance-note{font-size:12px;padding:8px 10px;}
+    .balance-currency{font-size:14px;}
+    .activation-section{margin:14px 0;}
+    #activateAccount{width:100%;justify-content:center;font-size:15px;padding:14px;border-radius:12px;}
+    .account-error{font-size:13px;padding:12px;border-radius:12px;}
+    .account-error p{margin:8px 0;}
+    .section-header h2{font-size:18px;}
+    .activity-item{padding:12px;}
+    .activity-title{font-size:14px;}
+    .activity-meta{font-size:11px;}
+    .activity-amount{font-size:14px;}
+    .user-profile{padding:18px;}
+    .avatar{width:60px;height:60px;font-size:24px;}
+    .quick-actions h3{font-size:16px;}
+    .action-btn{padding:12px;font-size:14px;border-radius:10px;}
+    .main-content>*{margin-bottom:14px;}
 }
-
-
 @media(max-width:768px){
-.nav-menu{position:fixed;bottom:70px;left:0;right:0;display:grid!important;grid-template-columns:repeat(4,1fr);background:#fff;padding:10px;gap:8px;box-shadow:0 -2px 10px rgba(0,0,0,.1)}
-.nav-button{display:flex;flex-direction:column;font-size:12px}
+    .nav-menu{position:fixed;bottom:70px;left:0;right:0;display:grid!important;grid-template-columns:repeat(4,1fr);background:#fff;padding:10px;gap:8px;box-shadow:0 -2px 10px rgba(0,0,0,.1)}
+    .nav-button{display:flex;flex-direction:column;font-size:12px}
 }
-
-
 @media(max-width:768px){
-.nav-main{position:sticky;top:0;background:#fff;z-index:1001}
-.nav-container{display:flex!important;flex-direction:row!important;justify-content:space-between;align-items:center}
-#menuToggle{order:2;margin-right:0}
-.nav-logo{order:1}
-.nav-menu{position:fixed!important;left:0;right:0;bottom:0;background:#fff;display:grid!important;grid-template-columns:repeat(4,1fr);padding:10px;box-shadow:0 -2px 10px rgba(0,0,0,.15);z-index:1002}
-body{padding-bottom:90px}
+    .nav-main{position:sticky;top:0;background:#fff;z-index:1001}
+    .nav-container{display:flex!important;flex-direction:row!important;justify-content:space-between;align-items:center}
+    #menuToggle{order:2;margin-right:0}
+    .nav-logo{order:1}
+    .nav-menu{position:fixed!important;left:0;right:0;bottom:0;background:#fff;display:grid!important;grid-template-columns:repeat(4,1fr);padding:10px;box-shadow:0 -2px 10px rgba(0,0,0,.15);z-index:1002}
+    body{padding-bottom:90px}
 }
-
 </style>
 </head>
 <body>
@@ -262,11 +235,10 @@ body{padding-bottom:90px}
         <button id="menuToggle" class="nav-button"><i class="fas fa-bars"></i></button>
         <div class="nav-logo">
             <span style="font-size:28px;font-weight:700;color:#003087">PayPal</span>
-            
         </div>
         <div class="nav-menu">
             <a class="nav-button active"><i class="fas fa-home"></i> Home</a>
-            <button id="sendNavButton" class="nav-button disabled" type="button">
+            <button id="sendNavButton" class="nav-button" type="button">
                 <i class="fas fa-paper-plane"></i> Send & Request
             </button>
             <a class="nav-button"><i class="fas fa-wallet"></i> Wallet</a>
@@ -292,10 +264,10 @@ body{padding-bottom:90px}
     </div>
     <div class="quick-actions">
         <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
-        <button id="sendMoneyButton" class="action-btn send disabled" type="button">
+        <button id="sendMoneyButton" class="action-btn send" type="button">
             <i class="fas fa-paper-plane"></i> Send Money
         </button>
-        <button class="action-btn request disabled">
+        <button class="action-btn request">
             <i class="fas fa-hand-holding-usd"></i> Request Money
         </button>
         <a href="/logout" class="action-btn logout">
@@ -310,23 +282,26 @@ body{padding-bottom:90px}
     <div class="balance-label">Available Balance</div>
     <div class="balance-amount" id="userBalance">$0.00</div>
     <button class="balance-currency">USD <i class="fas fa-chevron-down"></i></button>
-    <div class="balance-note">Incoming funds available • Outgoing locked</div>
+    <div class="balance-note note-neutral" id="balanceNote">
+        <i class="fas fa-info-circle"></i>
+        <span id="balanceNoteText">Incoming funds available • Outgoing locked</span>
+    </div>
 </div>
 
-<!-- ACTIVATION STATUS -->
+<!-- ACTIVATION STATUS (only shown when account is active) -->
 <div id="activationMessage" class="activation-message" style="display: none;">
     <i class="fas fa-check-circle"></i> Your account is activated! You can now use all features.
 </div>
 
-<!-- ACTIVATION BUTTON -->
+<!-- ACTIVATION BUTTON (only shown when balance > 0 and not active) -->
 <div class="activation-section" id="activationSection" style="display: none;">
     <button id="activateAccount" class="btn btn-primary">
         <i class="fas fa-unlock-alt"></i> <span id="activateText">Activate Account (2% of Balance)</span>
     </button>
 </div>
 
-<!-- PAYPAL-STYLE ERROR INFO -->
-<div class="account-error" id="accountError">
+<!-- PAYPAL-STYLE ERROR INFO (only shown when balance > 0 and not active) -->
+<div class="account-error" id="accountError" style="display: none;">
     <p>
         PayPal account have not been activated yet so can not make any transactions yet.
     </p>
@@ -364,7 +339,6 @@ let currentUserId = "";
 let userBalance = 0;
 let isSidebarOpen = false;
 
-// Define the DOM element variables
 const userAvatar = document.getElementById('userAvatar');
 const userName = document.getElementById('userName');
 const userEmail = document.getElementById('userEmail');
@@ -380,21 +354,63 @@ const activateText = document.getElementById('activateText');
 const sendNavButton = document.getElementById('sendNavButton');
 const sendMoneyButton = document.getElementById('sendMoneyButton');
 const menuToggle = document.getElementById('menuToggle');
+const balanceNote = document.getElementById('balanceNote');
+const balanceNoteText = document.getElementById('balanceNoteText');
 
-function setSendButtonState(isActive) {
+/**
+ * Controls whether Send/Request buttons are clickable.
+ * - If account is active -> enabled.
+ * - If account is NOT active but balance is still $0 -> enabled (account looks "normal").
+ * - If account is NOT active and balance > $0 -> disabled (must activate first).
+ */
+function setSendButtonState(isActive, hasBalance) {
+    const allowed = isActive || !hasBalance;
+
     [sendNavButton, sendMoneyButton].forEach(button => {
         if (!button) return;
-        button.classList.toggle('disabled', !isActive);
-        button.disabled = !isActive;
-        button.style.opacity = isActive ? '1' : '';
-        button.style.pointerEvents = isActive ? 'auto' : 'none';
-        button.onclick = isActive ? () => { window.location.href = '/send.html'; } : null;
+        button.classList.toggle('disabled', !allowed);
+        button.disabled = !allowed;
+        button.style.opacity = allowed ? '1' : '';
+        button.style.pointerEvents = allowed ? 'auto' : 'none';
+        button.onclick = allowed ? () => { window.location.href = '/send.html'; } : null;
     });
 }
+
+/**
+ * Updates the balance-note text + styling to match the activation UI.
+ * - Active account            -> green success note
+ * - Not active, $0 balance    -> neutral note (account looks normal)
+ * - Not active, balance > $0  -> warning note about outgoing being locked
+ * - Pending activation        -> warning note about pending review
+ */
+function setBalanceNote(state) {
+    if (!balanceNote || !balanceNoteText) return;
+
+    balanceNote.classList.remove('note-success', 'note-warning', 'note-neutral');
+
+    if (state === 'active') {
+        balanceNote.classList.add('note-success');
+        balanceNoteText.textContent = 'Incoming funds available • Outgoing enabled';
+        balanceNote.querySelector('i').className = 'fas fa-check-circle';
+    } else if (state === 'pending') {
+        balanceNote.classList.add('note-warning');
+        balanceNoteText.textContent = 'Incoming funds available • Outgoing locked (activation pending review)';
+        balanceNote.querySelector('i').className = 'fas fa-hourglass-half';
+    } else if (state === 'inactive-with-balance') {
+        balanceNote.classList.add('note-warning');
+        balanceNoteText.textContent = 'Incoming funds available • Outgoing locked until account is activated';
+        balanceNote.querySelector('i').className = 'fas fa-lock';
+    } else {
+        // inactive with $0 balance -> account looks normal
+        balanceNote.classList.add('note-neutral');
+        balanceNoteText.textContent = 'Incoming funds available • Outgoing enabled';
+        balanceNote.querySelector('i').className = 'fas fa-info-circle';
+    }
+}
+
 const sidebar = document.querySelector('.sidebar');
 const sidebarOverlay = document.getElementById('sidebarOverlay');
 
-// Function to show loading state
 function showLoading() {
     if (userName) userName.textContent = 'Loading...';
     if (userEmail) userEmail.textContent = 'loading...';
@@ -409,14 +425,12 @@ function showLoading() {
     }
 }
 
-// Function to show error state
 function showError() {
     if (userName) userName.textContent = 'Error Loading';
     if (userEmail) userEmail.textContent = 'Please refresh the page';
     if (userBalanceElement) userBalanceElement.textContent = '$0.00';
     if (userStatusText) userStatusText.textContent = 'Error';
     if (statusIcon) statusIcon.style.color = '#e74c3c';
-    
     if (activityList) {
         activityList.innerHTML = `
         <div class="empty-state">
@@ -426,95 +440,96 @@ function showError() {
     }
 }
 
-/* SIDEBAR TOGGLE FUNCTIONS */
 function toggleSidebar() {
     isSidebarOpen = !isSidebarOpen;
-    if (sidebar) {
-        sidebar.classList.toggle('active');
-    }
-    if (sidebarOverlay) {
-        sidebarOverlay.classList.toggle('active');
-    }
+    if (sidebar) sidebar.classList.toggle('active');
+    if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
 }
 
 function closeSidebar() {
     isSidebarOpen = false;
-    if (sidebar) {
-        sidebar.classList.remove('active');
+    if (sidebar) sidebar.classList.remove('active');
+    if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+}
+
+/* Core render logic for activation state */
+function renderActivationState(user) {
+    const activationStatus = user.status === 'active'
+        ? 'active'
+        : (user.status === 'pending' ? 'pending' : 'inactive');
+
+    const hasBalance = (Number(user.balance) || 0) > 0;
+
+    if (activationStatus === 'active') {
+        // Permanently active (admin-activated or approved payment)
+        if (activationMessage) activationMessage.style.display = 'block';
+        if (activationSection) activationSection.style.display = 'none';
+        if (accountError) accountError.style.display = 'none';
+        if (statusIcon) statusIcon.style.color = '#28a745';
+        if (userStatusText) userStatusText.textContent = 'Active';
+        setSendButtonState(true, hasBalance);
+        setBalanceNote('active');
+        return;
     }
-    if (sidebarOverlay) {
-        sidebarOverlay.classList.remove('active');
+
+    if (!hasBalance) {
+        // No money sent yet -> account looks completely normal
+        if (activationMessage) activationMessage.style.display = 'none';
+        if (activationSection) activationSection.style.display = 'none';
+        if (accountError) accountError.style.display = 'none';
+        if (statusIcon) statusIcon.style.color = '#28a745';
+        if (userStatusText) userStatusText.textContent = 'Active';
+        setSendButtonState(true, false);
+        setBalanceNote('normal');
+        return;
+    }
+
+    // Money has arrived, but account not active -> show activation UI
+    if (activationMessage) activationMessage.style.display = 'none';
+    if (activationSection) activationSection.style.display = 'block';
+    if (accountError) accountError.style.display = 'block';
+    setSendButtonState(false, true);
+
+    if (activationStatus === 'pending') {
+        if (statusIcon) statusIcon.style.color = '#f39c12';
+        if (userStatusText) userStatusText.textContent = 'Pending Activation';
+        if (activateText) activateText.textContent = 'Activation Payment Pending Admin Review';
+        setBalanceNote('pending');
+    } else {
+        if (statusIcon) statusIcon.style.color = '#f5a623';
+        if (userStatusText) userStatusText.textContent = 'Inactive';
+        const activationFee = (Number(user.balance) || 0) * 0.02;
+        if (activateText) activateText.textContent = `Activate Account (Pay $${activationFee.toFixed(2)} - 2% of Balance)`;
+        setBalanceNote('inactive-with-balance');
     }
 }
 
 /* LOAD USER */
 function loadUserData() {
     showLoading();
-    
+
     fetch('/api/user')
     .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return response.json();
     })
     .then(user => {
         console.log('User data loaded successfully:', user);
         currentUserId = user.id;
         userBalance = user.balance;
-        
-        // Update user profile
-        if (userAvatar && user.name) {
-            userAvatar.textContent = user.name[0].toUpperCase();
-        }
-        if (userName) {
-            userName.textContent = user.name || 'User';
-        }
-        if (userEmail) {
-            userEmail.textContent = user.email || 'No email';
-        }
-        if (userBalanceElement) {
-            userBalanceElement.textContent = "$" + (user.balance || 0).toFixed(2);
-        }
-        
-        // Activation status is server-side: inactive -> pending -> active.
-        const activationStatus = user.status === 'active'
-            ? 'active'
-            : (user.status === 'pending' ? 'pending' : 'inactive');
 
-        if (activationStatus === 'active') {
-            if (activationMessage) activationMessage.style.display = 'block';
-            if (activationSection) activationSection.style.display = 'none';
-            if (accountError) accountError.style.display = 'none';
-            if (statusIcon) statusIcon.style.color = '#28a745';
-            if (userStatusText) userStatusText.textContent = 'Active';
-            setSendButtonState(true);
-        } else {
-            if (activationMessage) activationMessage.style.display = 'none';
-            if (activationSection) activationSection.style.display = 'block';
-            if (accountError) accountError.style.display = 'block';
-            setSendButtonState(false);
+        if (userAvatar && user.name) userAvatar.textContent = user.name[0].toUpperCase();
+        if (userName) userName.textContent = user.name || 'User';
+        if (userEmail) userEmail.textContent = user.email || 'No email';
+        if (userBalanceElement) userBalanceElement.textContent = "$" + (user.balance || 0).toFixed(2);
 
-            if (activationStatus === 'pending') {
-                if (statusIcon) statusIcon.style.color = '#f39c12';
-                if (userStatusText) userStatusText.textContent = 'Pending Activation';
-                if (activateText) activateText.textContent = 'Activation Payment Pending Admin Review';
-            } else {
-                if (statusIcon) statusIcon.style.color = '#f5a623';
-                if (userStatusText) userStatusText.textContent = 'Inactive';
-                const activationFee = (user.balance || 0) * 0.02;
-                if (activateText) activateText.textContent = `Activate Account (Pay $${activationFee.toFixed(2)} - 2% of Balance)`;
-            }
-        }
-        
-        // Load activity after user data is loaded
+        renderActivationState(user);
+
         loadActivity();
     })
     .catch(error => {
         console.error('Error loading user:', error);
         showError();
-        
-        // Check if user is logged out
         if (error.message.includes('401') || error.message.includes('403')) {
             window.location.href = '/login';
         }
@@ -524,17 +539,15 @@ function loadUserData() {
 /* LOAD ACTIVITY */
 function loadActivity() {
     if (!activityList) return;
-    
+
     fetch('/api/user/transactions')
     .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return response.json();
     })
     .then(transactions => {
         console.log('Transactions loaded:', transactions);
-        
+
         if (!transactions || transactions.length === 0) {
             activityList.innerHTML = `
             <div class="empty-state">
@@ -544,15 +557,15 @@ function loadActivity() {
             </div>`;
             return;
         }
-        
+
         let html = "";
         transactions.slice(0, 6).forEach(transaction => {
             const isCredit = transaction.to === currentUserId || transaction.toId === currentUserId;
             const isActivation = transaction.type === 'activation_fee';
-            
+
             let icon = 'fa-exchange-alt';
             let title = 'Transaction';
-            
+
             if (isActivation) {
                 icon = 'fa-unlock-alt';
                 title = 'Account Activation';
@@ -563,11 +576,10 @@ function loadActivity() {
                 icon = 'fa-paper-plane';
                 title = 'Outgoing Payment';
             }
-            
-            // Format timestamp
+
             const timestamp = new Date(transaction.timestamp);
             const timeString = timestamp.toLocaleString();
-            
+
             html += `
             <div class="activity-item">
                 <div class="activity-icon">
@@ -586,7 +598,7 @@ function loadActivity() {
                 </div>
             </div>`;
         });
-        
+
         activityList.innerHTML = html;
     })
     .catch(error => {
@@ -623,59 +635,32 @@ function refreshBalance() {
     .then(user => {
         if (userBalanceElement && user.balance !== undefined) {
             userBalanceElement.textContent = "$" + user.balance.toFixed(2);
-            
-            const isActive = user.status === 'active';
-            setSendButtonState(isActive);
-
-            if (!isActive && activateText) {
-              if (user.status === 'pending') {
-                    activateText.textContent = 'Activation Payment Pending Admin Review';
-                } else {
-                    const activationFee = user.balance * 0.02;
-                    activateText.textContent = `Activate Account (Pay $${activationFee.toFixed(2)} - 2% of Balance)`;
-                }
-            }
+            renderActivationState(user);
         }
     })
     .catch(error => console.error('Error refreshing balance:', error));
 }
 
-// Refresh balance every 30 seconds
 setInterval(refreshBalance, 30000);
 
 /* INITIALIZE PAGE */
-// Add a small delay to ensure DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Dashboard page loaded');
-    
-    // Setup sidebar toggle
-    if (menuToggle) {
-        menuToggle.addEventListener('click', toggleSidebar);
-    }
-    
-    // Close sidebar when clicking on overlay
-    if (sidebarOverlay) {
-        sidebarOverlay.addEventListener('click', closeSidebar);
-    }
-  // Close sidebar when clicking on a link inside it
+
+    if (menuToggle) menuToggle.addEventListener('click', toggleSidebar);
+    if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+
     const sidebarLinks = document.querySelectorAll('.sidebar a, .sidebar button');
     sidebarLinks.forEach(link => {
         link.addEventListener('click', () => {
-            // Only close on mobile (screen width less than 768px)
-            if (window.innerWidth < 768) {
-                closeSidebar();
-            }
+            if (window.innerWidth < 768) closeSidebar();
         });
     });
-    
-    // Close sidebar with Escape key
+
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isSidebarOpen) {
-            closeSidebar();
-        }
+        if (e.key === 'Escape' && isSidebarOpen) closeSidebar();
     });
-    
-    // Start loading user data
+
     setTimeout(loadUserData, 100);
 });
 
@@ -683,9 +668,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const logoutBtn = document.querySelector('.action-btn.logout');
 if (logoutBtn) {
     logoutBtn.addEventListener('click', function(e) {
-        if (!confirm('Are you sure you want to logout?')) {
-            e.preventDefault();
-        }
+        if (!confirm('Are you sure you want to logout?')) e.preventDefault();
     });
 }
 </script>
